@@ -37,7 +37,7 @@ import java.util.jar.JarFile;
  * <p>
  * 这个类中的每个方法都可以“安全”地处理 <code>null</code> ，而不会抛出 <code>NullPointerException</code>。
  * </p
- * @author  rwinstone
+ * @author  winstone
  */
 public abstract class ReflectKit {
 

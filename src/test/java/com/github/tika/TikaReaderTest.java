@@ -22,10 +22,9 @@ public class TikaReaderTest {
         /*String str = TikaUtil.getInstance().getPdfText(new File("F:\\tmp\\webmagic\\abc.pdf")) ;
         System.out.println(str);*/
 
-
-        //String str1 = TikaUtil.getInstance().getWordText(new File("F:\\tmp\\webmagic\\bcc.docx")) ;
-        //System.out.println(str1);
-        InputStream input=new FileInputStream(new File("F:\\tmp\\yyy.xlsx"));//可以写文件路径，pdf，word，html等
+        String str1 = TikaUtil.getInstance().getWordText(new File("F:\\tmp\\aa.doc")) ;
+        System.out.println(str1);
+/*        InputStream input=new FileInputStream(new File("F:\\tmp\\yyy.xlsx"));//可以写文件路径，pdf，word，html等
         BodyContentHandler textHandler=new BodyContentHandler();
         Metadata matadata=new Metadata();//Metadata对象保存了作者，标题等元数据
         Parser parser=new AutoDetectParser();//当调用parser，AutoDetectParser会自动估计文档MIME类型，此处输入pdf文件，因此可以使用PDFParser
@@ -34,6 +33,6 @@ public class TikaReaderTest {
         input.close();
         System.out.println("Title: "+matadata.get(Metadata.TITLE));
         System.out.println("Type: "+matadata.get(Metadata.TYPE));
-        System.out.println("Body: "+textHandler.toString());//从textHandler打印正文
+        System.out.println("Body: "+textHandler.toString());//从textHandler打印正文*/
     }
 }
