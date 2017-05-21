@@ -16,10 +16,6 @@
  */
 package com.github.netty.remoting.protocol;
 
-/**
- * @author shijia.wxr
- *
- */
 public enum RemotingCommandType {
     REQUEST_COMMAND,
     RESPONSE_COMMAND;

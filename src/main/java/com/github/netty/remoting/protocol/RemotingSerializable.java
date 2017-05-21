@@ -21,10 +21,6 @@ import com.alibaba.fastjson.JSON;
 import java.nio.charset.Charset;
 
 
-/**
- * @author shijia.wxr
- *
- */
 public abstract class RemotingSerializable {
     public final static Charset CHARSET_UTF8 = Charset.forName("UTF-8");
 

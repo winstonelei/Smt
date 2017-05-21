@@ -50,12 +50,6 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
-/**
-
- *
- * @author shijia.wxr
- *
- */
 public class NettyRemotingServer extends NettyRemotingAbstract implements RemotingServer {
     private static final Logger log = LoggerFactory.getLogger(RemotingHelper.RemotingLogName);
     private final ServerBootstrap serverBootstrap;
@@ -102,7 +96,6 @@ public class NettyRemotingServer extends NettyRemotingAbstract implements Remoti
         this.eventLoopGroupBoss = new NioEventLoopGroup(1, new ThreadFactory() {
             private AtomicInteger threadIndex = new AtomicInteger(0);
 
-
             @Override
             public Thread newThread(Runnable r) {
                 return new Thread(r, String.format("NettyBoss_%d", this.threadIndex.incrementAndGet()));
@@ -141,10 +134,7 @@ public class NettyRemotingServer extends NettyRemotingAbstract implements Remoti
         this.defaultEventExecutorGroup = new DefaultEventExecutorGroup(//
                 nettyServerConfig.getServerWorkerThreads(), //
                 new ThreadFactory() {
-
                     private AtomicInteger threadIndex = new AtomicInteger(0);
-
-
                     @Override
                     public Thread newThread(Runnable r) {
                         return new Thread(r, "NettyServerCodecThread_" + this.threadIndex.incrementAndGet());
