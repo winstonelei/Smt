@@ -22,7 +22,7 @@ public class TikaReaderTest {
         /*String str = TikaUtil.getInstance().getPdfText(new File("F:\\tmp\\webmagic\\abc.pdf")) ;
         System.out.println(str);*/
 
-        String str1 = TikaUtil.getInstance().getWordText(new File("F:\\tmp\\aa.doc")) ;
+        String str1 = TikaUtil.getInstance().getWordText(new File("F:\\tmp\\tab.docx")) ;
         System.out.println(str1);
 /*        InputStream input=new FileInputStream(new File("F:\\tmp\\yyy.xlsx"));//可以写文件路径，pdf，word，html等
         BodyContentHandler textHandler=new BodyContentHandler();

@@ -44,9 +44,6 @@ import java.util.Map.Entry;
 import java.util.concurrent.*;
 
 
-/**
- * @author shijia.wxr
- */
 public abstract class NettyRemotingAbstract {
     private static final Logger plog = LoggerFactory.getLogger(RemotingHelper.RemotingLogName);
 
