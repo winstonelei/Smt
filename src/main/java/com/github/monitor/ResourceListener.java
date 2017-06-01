@@ -12,9 +12,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ResourceListener {
+
 	private static ExecutorService fixedThreadPool = Executors.newFixedThreadPool(5);
 	private WatchService ws;
 	private String listenerPath;
+
 	private ResourceListener(String path) {
 		try {
 			ws = FileSystems.getDefault().newWatchService();
@@ -37,8 +39,12 @@ public class ResourceListener {
 			StandardWatchEventKinds.ENTRY_DELETE,
 			StandardWatchEventKinds.ENTRY_CREATE);
 	}
-	
 
+	/**
+	 * 启动
+	 * @param args
+	 * @throws IOException
+     */
 	public static void main(String[] args) throws IOException {
 		ResourceListener.addListener("F:\\var");
 	}

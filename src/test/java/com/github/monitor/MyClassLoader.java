@@ -8,7 +8,7 @@ import java.net.URLClassLoader;
 import java.util.Stack;
 
 /**
- * Created by dell on 2016/12/23.
+ * Created by winstone on 2016/12/23.
  */
 public class MyClassLoader {
 
