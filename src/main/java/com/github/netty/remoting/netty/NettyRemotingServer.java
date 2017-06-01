@@ -161,7 +161,6 @@ public class NettyRemotingServer extends NettyRemotingAbstract implements Remoti
                             @Override
                             public void initChannel(SocketChannel ch) throws Exception {
                                 ch.pipeline().addLast(
-                                        //
                                         defaultEventExecutorGroup, //
                                         new NettyEncoder(), //
                                         new NettyDecoder(), //
@@ -188,7 +187,6 @@ public class NettyRemotingServer extends NettyRemotingAbstract implements Remoti
         }
 
         this.timer.scheduleAtFixedRate(new TimerTask() {
-
             @Override
             public void run() {
                 try {
@@ -296,7 +294,6 @@ public class NettyRemotingServer extends NettyRemotingAbstract implements Remoti
     }
 
     class NettyServerHandler extends SimpleChannelInboundHandler<RemotingCommand> {
-
         @Override
         protected void channelRead0(ChannelHandlerContext ctx, RemotingCommand msg) throws Exception {
             processMessageReceived(ctx, msg);

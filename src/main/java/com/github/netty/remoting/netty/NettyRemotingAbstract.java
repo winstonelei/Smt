@@ -47,12 +47,9 @@ import java.util.concurrent.*;
 public abstract class NettyRemotingAbstract {
     private static final Logger plog = LoggerFactory.getLogger(RemotingHelper.RemotingLogName);
 
-
     protected final Semaphore semaphoreOneway;
 
-
     protected final Semaphore semaphoreAsync;
-
 
     protected final ConcurrentHashMap<Integer /* opaque */, ResponseFuture> responseTable =
             new ConcurrentHashMap<Integer, ResponseFuture>(256);
@@ -238,7 +235,6 @@ public abstract class NettyRemotingAbstract {
         while (it.hasNext()) {
             Entry<Integer, ResponseFuture> next = it.next();
             ResponseFuture rep = next.getValue();
-
             if ((rep.getBeginTimestamp() + rep.getTimeoutMillis() + 1000) <= System.currentTimeMillis()) {
                 rep.release();
                 it.remove();
@@ -246,7 +242,6 @@ public abstract class NettyRemotingAbstract {
                 plog.warn("remove timeout request, " + rep);
             }
         }
-
         for (ResponseFuture rf : rfList) {
             try {
                 rf.executeInvokeCallback();
@@ -272,7 +267,6 @@ public abstract class NettyRemotingAbstract {
                     } else {
                         responseFuture.setSendRequestOK(false);
                     }
-
                     responseTable.remove(opaque);
                     responseFuture.setCause(f.cause());
                     responseFuture.putResponse(null);
@@ -289,7 +283,6 @@ public abstract class NettyRemotingAbstract {
                     throw new RemotingSendRequestException(RemotingHelper.parseSocketAddressAddr(addr), responseFuture.getCause());
                 }
             }
-
             return responseCommand;
         } finally {
             this.responseTable.remove(opaque);
