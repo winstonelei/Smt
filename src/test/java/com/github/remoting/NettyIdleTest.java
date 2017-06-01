@@ -33,7 +33,7 @@ import static org.junit.Assert.assertTrue;
 
 
 /**
- * @author shijia.wxr
+ * @author winstone
  *
  */
 public class NettyIdleTest {

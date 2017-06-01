@@ -24,7 +24,7 @@ import org.junit.Test;
 
 
 /**
- * @author shijia.wxr
+ * @author winstone
  */
 public class MixTest {
     @Test

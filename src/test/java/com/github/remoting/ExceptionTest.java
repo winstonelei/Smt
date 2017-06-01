@@ -36,7 +36,7 @@ import static org.junit.Assert.assertTrue;
 
 
 /**
- * @author shijia.wxr
+ * @author winstone
  */
 class ExceptionTest {
     private static RemotingServer createRemotingServer() throws InterruptedException {
