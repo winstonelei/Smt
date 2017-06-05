@@ -23,7 +23,7 @@ public class TikaReaderTest {
         System.out.println(str);*/
 
         String str1 = TikaUtil.getInstance().getWordText(new File("F:\\tmp\\tab.docx")) ;
-        System.out.println(str1);
+        System.out.println(str1.trim().replaceAll("\r|\n",""));
 /*        InputStream input=new FileInputStream(new File("F:\\tmp\\yyy.xlsx"));//可以写文件路径，pdf，word，html等
         BodyContentHandler textHandler=new BodyContentHandler();
         Metadata matadata=new Metadata();//Metadata对象保存了作者，标题等元数据
