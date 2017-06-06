@@ -19,9 +19,6 @@ package com.github.netty.remoting;
 import com.github.netty.remoting.exception.RemotingCommandException;
 
 
-/**
- * @author shijia.wxr
- */
 public interface CommandCustomHeader {
     void checkFields() throws RemotingCommandException;
 }

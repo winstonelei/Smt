@@ -27,12 +27,6 @@ import com.github.netty.remoting.protocol.RemotingCommand;
 import org.junit.Test;
 
 
-/**
-
- *
- * @author winstone
- *
- */
 public class NettyConnectionTest {
     @Test
     public void test_connect_timeout() throws InterruptedException, RemotingConnectException,

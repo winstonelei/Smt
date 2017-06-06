@@ -34,10 +34,6 @@ import java.util.concurrent.Executors;
 
 import static org.junit.Assert.assertTrue;
 
-
-/**
- * @author winstone
- */
 class ExceptionTest {
     private static RemotingServer createRemotingServer() throws InterruptedException {
         NettyServerConfig config = new NettyServerConfig();

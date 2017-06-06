@@ -26,9 +26,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 
-/**
- * @author shijia.wxr
- */
 public class ResponseFuture {
     private final int opaque;
     private final long timeoutMillis;

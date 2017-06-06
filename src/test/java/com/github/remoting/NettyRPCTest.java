@@ -36,9 +36,6 @@ import java.util.concurrent.Executors;
 import static org.junit.Assert.assertTrue;
 
 
-/**
- * @author shijia.wxr
- */
 public class NettyRPCTest {
     @Test
     public void test_RPC_Sync() throws InterruptedException, RemotingConnectException,

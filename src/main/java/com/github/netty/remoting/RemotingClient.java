@@ -27,10 +27,6 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 
 
-/**
- * @author winstone
- *
- */
 public interface RemotingClient extends RemotingService {
 
     public void updateNameServerAddressList(final List<String> addrs);

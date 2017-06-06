@@ -23,9 +23,6 @@ package com.github.remoting;
 import org.junit.Test;
 
 
-/**
- * @author winstone
- */
 public class MixTest {
     @Test
     public void test_extFieldsValue() {

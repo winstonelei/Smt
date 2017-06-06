@@ -40,7 +40,6 @@ public class MemoryChannel extends AbstractMemoryChannel {
             queueRemaining.release();
             return event;
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return null;
