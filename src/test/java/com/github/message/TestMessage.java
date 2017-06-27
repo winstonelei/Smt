@@ -10,7 +10,7 @@ public class TestMessage {
 
     public  static void main(String[] args)throws InterruptedException {
 
-          MessageProcessor processor = new MessageProcessor();
+          MessageProcessor processor = MessageProcessor.getInstance();
 
           MessageHandler handler = new TestMessageHandler();
 

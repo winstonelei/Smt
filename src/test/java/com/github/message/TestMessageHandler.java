@@ -10,7 +10,8 @@ public class TestMessageHandler implements  MessageHandler {
     public void process(DefaultMessage message) {
         Serializable body = message.getBody();
 
+
         System.out.println("TestMessageHandler process message:" + body );
-        try {Thread.sleep(500);} catch (Exception e) {}
+        try {Thread.sleep(1000);} catch (Exception e) {}
     }
 }

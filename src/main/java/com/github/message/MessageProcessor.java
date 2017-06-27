@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Created by winstone on 2017/6/5.
+ * 使用priorityBlockingQueue实现 有界优先对列功能
  */
 public class MessageProcessor implements Closeable{
 
@@ -23,7 +24,13 @@ public class MessageProcessor implements Closeable{
 
     private AtomicBoolean closed = new AtomicBoolean(false);
 
-    public MessageProcessor(){
+    private static  MessageProcessor messageProcessor = new MessageProcessor();
+
+    public  static  MessageProcessor getInstance(){
+        return messageProcessor;
+    }
+
+    private MessageProcessor(){
        executor = Executors.newFixedThreadPool(3, new StandardThreadExecutor.StandardThreadFactory("MessageProcessor"));
        executor.submit(new Runnable() {
                @Override
@@ -75,7 +82,6 @@ public class MessageProcessor implements Closeable{
     }
 
    class PriorityTask implements Runnable,Comparable<PriorityTask>{
-
 
        private DefaultMessage message;
 
