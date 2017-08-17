@@ -9,9 +9,21 @@ public class TaskMonitorTest {
 
 
     public static  void main(String[] args){
-
-        String task = UUID.randomUUID().toString();
-        TaskMonitor.addTask(task);
+        new Thread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        while(true){
+                           try{
+                               String task = UUID.randomUUID().toString();
+                               TaskMonitor.addTask(task);
+                               Thread.sleep(1000L);
+                           }catch (Exception e){
+                               e.printStackTrace();
+                           }
+                        }
+                    }
+                }
+        ).start();
     }
-
 }
