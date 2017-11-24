@@ -30,9 +30,10 @@ public class Worker implements Runnable {
 		Object output = null;
 		try {
 			//处理任务的耗时。。 比如说进行操作数据库。。。
-			Thread.sleep(500);
+		//	Thread.sleep(500);
 			output = input.getPrice();
-		} catch (InterruptedException e) {
+			System.out.println(input.getMessage());
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return output;
