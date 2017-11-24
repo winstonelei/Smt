@@ -1,11 +1,14 @@
 package com.github.httpdownloader;
 
+import net.sf.ehcache.search.aggregator.Count;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * http  下载器
@@ -31,6 +34,7 @@ public class HttpDownloadHelper {
             hasTimestamp = true;
         }
 
+        //CountDownLatch countDownLatch = new CountDownLatch(1);
         GetThread getThread = new GetThread(source, dest, hasTimestamp, timestamp, progress);
         try {
             getThread.setDaemon(true);
@@ -38,7 +42,9 @@ public class HttpDownloadHelper {
             
             long startTime = System.currentTimeMillis();
             System.out.println("开始下载文件.."+startTime);
+            //可以使用countDownLatch 代替join
             getThread.join(timeoutValue);
+            // countDownLatch.wait(timeoutValue);
 
             if (getThread.isAlive()) {
                 throw new Exception("The GET operation took longer than " + timeoutValue + ", stopping it.");
@@ -276,6 +282,8 @@ public class HttpDownloadHelper {
         private OutputStream os = null;
         private URLConnection connection;
         private int redirections = 0;
+        //private CountDownLatch countDownLatch;
+
 
         GetThread(URL source, File dest, boolean h, long t, DownloadProgress p) {
             this.source = source;
@@ -290,6 +298,8 @@ public class HttpDownloadHelper {
                 success = get();
             } catch (IOException ioex) {
                 ioexception = ioex;
+            }finally {
+              //  countDownLatch.countDown();
             }
         }
 

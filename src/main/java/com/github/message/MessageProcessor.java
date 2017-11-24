@@ -31,24 +31,21 @@ public class MessageProcessor implements Closeable{
     }
 
     private MessageProcessor(){
-       executor = Executors.newFixedThreadPool(3, new StandardThreadExecutor.StandardThreadFactory("MessageProcessor"));
+       executor = Executors.newFixedThreadPool(10, new StandardThreadExecutor.StandardThreadFactory("MessageProcessor"));
        executor.submit(new Runnable() {
                @Override
                public void run() {
                 while(!closed.get()){
                     try{
                         PriorityTask task = taskQueue.take();
-
                         if(task.getMessage() == null){
                             break;
                         }
-
                         if(task.getNextFireTime() - System.currentTimeMillis() > 0){
                             TimeUnit.MICROSECONDS.sleep(1000);
                             taskQueue.put(task);
                             continue;
                         }
-
                         task.run();
                     }catch(Exception e){
                         logger.error(e.getMessage());

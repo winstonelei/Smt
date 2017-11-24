@@ -1,15 +1,18 @@
 package com.github.thread.masterworker;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.*;
 
 public class Master {
 
 	//1 有一个盛放任务的容器
-	private ConcurrentLinkedQueue<Task> workQueue = new ConcurrentLinkedQueue<Task>();
-	
+	//private ConcurrentLinkedQueue<Task> workQueue = new ConcurrentLinkedQueue<Task>();
+	private    BlockingQueue<Task> workQueue = new LinkedBlockingDeque<>();
+
+	private    BlockingQueue<Object> workQueues = new LinkedBlockingDeque<>();
+
 	//2 需要有一个盛放worker的集合
 	private HashMap<String, Thread> workers = new HashMap<String, Thread>();
 	
@@ -20,7 +23,7 @@ public class Master {
 	public Master(Worker worker , int workerCount){
 		worker.setWorkQueue(this.workQueue);
 		worker.setResultMap(this.resultMap);
-		
+		worker.setWorkQueues(this.workQueues);
 		for(int i = 0; i < workerCount; i ++){
 			this.workers.put(Integer.toString(i), new Thread(worker));
 		}
@@ -28,9 +31,14 @@ public class Master {
 	
 	//5 需要一个提交任务的方法
 	public void submit(Task task){
-		this.workQueue.add(task);
+		//this.workQueue.add(task);
+		this.workQueue.offer(task);
 	}
-	
+
+	public void submitLists(Object obj){
+		this.workQueues.offer(obj);
+	}
+
 	//6 需要有一个执行的方法，启动所有的worker方法去执行任务
 	public void execute(){
 		for(Map.Entry<String, Thread> me : workers.entrySet()){
