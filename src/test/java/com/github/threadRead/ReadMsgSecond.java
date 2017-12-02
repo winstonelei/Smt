@@ -36,10 +36,16 @@ public class ReadMsgSecond {
                 t.setPrice(ai.get());
                 t.setMessage(s);
                 master.submit(t);
+                System.out.println("begin...");
             }
             long entTime = System.currentTimeMillis();
             System.out.println("总耗时"+(entTime-startTime));
             System.out.println("总行数"+ai.get());
+    /*        while(master.isComplete()){
+                long entTime = System.currentTimeMillis();
+                System.out.println("总耗时"+(entTime-startTime));
+                System.out.println("总行数"+ai.get());
+            }*/
             br.close();
         }catch(Exception e){
             e.printStackTrace();
@@ -47,7 +53,7 @@ public class ReadMsgSecond {
         return result.toString();
     }
     public static void main(String[] args) {
-       /* File file = new File("F:\\var\\log\\a.txt");
+  /*      File file = new File("F:\\var\\log\\a.txt");
        txt2String(file);*/
         ExecutorService executorService =
                 Executors.newSingleThreadExecutor(new NamedThreadFactory("local.register.watch.executor"));
