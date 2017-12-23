@@ -11,7 +11,7 @@ public class CaseRunner4_1 {
 
   public static void main(String[] args) throws Exception {
     if (0 == args.length) {
-      args = new String[] { "http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-2.9.0/hadoop-2.9.0.tar.gz", "2", "3" };
+      args = new String[] { "https://download.jetbrains.com/python/pycharm-professional-2017.3.exe", "2", "3" };
     }
     main0(args);
   }

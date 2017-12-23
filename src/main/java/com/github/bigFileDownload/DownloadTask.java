@@ -28,6 +28,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * 下载子任务
+ *
+ * @author Viscent Huang
  */
 public class DownloadTask implements Runnable {
   private final long lowerBound;
