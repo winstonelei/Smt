@@ -21,8 +21,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * 大文件下载器
- *
- * @author Viscent Huang
  */
 public class BigFileDownloader {
   protected final URL requestURL;
