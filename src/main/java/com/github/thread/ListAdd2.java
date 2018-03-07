@@ -13,7 +13,7 @@ public class ListAdd2 {
 	private volatile static List list = new ArrayList();	
 	
 	public void add(){
-		list.add("bjsxt");
+		list.add("xxx");
 	}
 	public int size(){
 		return list.size();

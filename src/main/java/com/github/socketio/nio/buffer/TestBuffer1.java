@@ -1,8 +1,6 @@
-package com.github.socketio.nio.test;
+package com.github.socketio.nio.buffer;
 
-import java.nio.IntBuffer;
-
-public class TestBuffer {
+public class TestBuffer1 {
 	
 	public static void main(String[] args) {
 		

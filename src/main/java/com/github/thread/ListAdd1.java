@@ -9,7 +9,7 @@ public class ListAdd1 {
 	private volatile static List list = new ArrayList();	
 	
 	public void add(){
-		list.add("bjsxt");
+		list.add("aaa");
 	}
 	public int size(){
 		return list.size();
