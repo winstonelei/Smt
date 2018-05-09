@@ -12,8 +12,8 @@ public class MappedByteBufferTest {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         try{
-            RandomAccessFile rafi = new RandomAccessFile("F:\\tmp\\ppp.mp4", "r");
-            RandomAccessFile rafo = new RandomAccessFile("F:\\tmp\\ppp333.mp4", "rw");
+            RandomAccessFile rafi = new RandomAccessFile("D:\\soft\\kafka_2.11-1.1.0.tgz", "r");
+            RandomAccessFile rafo = new RandomAccessFile("D:\\soft\\kafka.tgz", "rw");
             FileChannel fci = rafi.getChannel();
             FileChannel fco = rafo.getChannel();
             long size = fci.size();
@@ -32,5 +32,20 @@ public class MappedByteBufferTest {
         }catch(Exception e){
             e.printStackTrace();
         }
+
+    /*  try {
+          int DATA_CHUNK = 53*1024 * 1024;
+          MappedFile rafo = new MappedFile("fc1.dat", "D:\\temp\\");
+          long start = System.currentTimeMillis();
+          byte[] data = new byte[DATA_CHUNK];
+          rafo.appendData( data);
+          System.out.println("Spend: "+(double)(System.currentTimeMillis()-start) / 1000 + "s");
+
+      }catch (Exception e){
+          e.printStackTrace();
+      }*/
+
+
+
     }
 }
