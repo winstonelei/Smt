@@ -14,7 +14,6 @@ import java.nio.channels.ReadableByteChannel;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 
-import org.springframework.util.StopWatch;
 
 public class WriteBigFileComparison {
 
@@ -203,7 +202,7 @@ public class WriteBigFileComparison {
 	}
 
 	public static void main(String[] args) throws IOException {
-		StopWatch sw = new StopWatch();
+	/*	StopWatch sw = new StopWatch();
 
 		sw.start("write with file channel's write(ByteBuffer)");
 		writeWithFileChannel();
@@ -215,7 +214,7 @@ public class WriteBigFileComparison {
 		
 		sw.start("write with MappedByteBuffer");
 		writeWithMappedByteBuffer();
-		sw.stop();
+		sw.stop();*/
 	}
 
 }
