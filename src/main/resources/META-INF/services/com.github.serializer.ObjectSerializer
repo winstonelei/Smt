@@ -1,0 +1,2 @@
+com.github.serializer.KryoSerializer
+com.github.serializer.HessianSerializer
