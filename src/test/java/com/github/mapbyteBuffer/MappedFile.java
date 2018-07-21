@@ -9,9 +9,11 @@ import java.nio.channels.FileChannel;
 /**
  * MappedByteBuffer需要占用“双倍”的内存（对象JVM堆内存和Direct Byte Buffer内存），可以通过-XX:MaxDirectMemorySize参数设置后者最大大小
 
- 不要频繁调用MappedByteBuffer的force()方法，因为这个方法会强制OS刷新内存中的数据到磁盘，从而只能获得些微的性能提升（相比IO方式），可以用后面的代码实例进行定时、定量刷新
+ 不要频繁调用MappedByteBuffer的force()方法，因为这个方法会强制OS刷新内存中的数据到磁盘，从而只能获得些微的性能提升（相比IO方式），
+ 可以用后面的代码实例进行定时、定量刷新
 
- 如果突然断电或者服务器突然Down，内存映射文件数据可能还没有写入磁盘，这时就会丢失一些数据。为了降低这种风险，避免用MappedByteBuffer写超大文件，可以把大文件分割成几个小文件，但不能太小（否则将失去性能优势）
+ 如果突然断电或者服务器突然Down，内存映射文件数据可能还没有写入磁盘，这时就会丢失一些数据。为了降低这种风险，避免用MappedByteBuffer写超大文件，
+ 可以把大文件分割成几个小文件，但不能太小（否则将失去性能优势）
  */
 public class MappedFile {
 	
