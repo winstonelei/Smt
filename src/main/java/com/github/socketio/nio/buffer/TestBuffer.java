@@ -4,7 +4,12 @@ package com.github.socketio.nio.buffer;
 
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 /*
  * 一、缓冲区（Buffer）：在 Java NIO 中负责数据的存取。缓冲区就是数组。用于存储不同数据类型的数据
@@ -137,6 +142,31 @@ public class TestBuffer {
 		
 		System.out.println((char)buf.get());
 		
+	}
+
+	@Test
+	public void test4(){
+
+		try {
+			FileChannel inChannel = FileChannel.open(Paths.get("D:\\temp\\1.txt"), StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
+
+			//内存映射文件
+			MappedByteBuffer inMappedBuf = inChannel.map(FileChannel.MapMode.READ_WRITE, 0, 10000);
+			System.out.println(inMappedBuf.getInt(0));
+
+			inMappedBuf.putInt(4,100);
+
+
+
+			System.out.println(inMappedBuf.getInt(4));
+
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+		}
+
+
 	}
 
 }
