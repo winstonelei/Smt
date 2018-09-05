@@ -48,7 +48,7 @@ public class ThreeConditionCommunication {
 		  Condition condition1 = lock.newCondition();
 		  Condition condition2 = lock.newCondition();
 		  Condition condition3 = lock.newCondition();
-		  private int shouldSub = 1;
+		  private volatile int shouldSub = 1;
 		  public  void sub2(int i){
 			  lock.lock();
 			  try{
