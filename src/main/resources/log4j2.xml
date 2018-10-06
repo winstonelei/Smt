@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <!-- 变量配置 -->
+    <Properties>
+        <Property name="log_path">logs/leo_ftp_helper</Property>
+    </Properties>
+
+    <!-- appender配置 -->
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%d][%t][%p][%c:%L] -- %m%n"/>
+        </Console>
+        <RollingFile name="DailyRollingFile" fileName="${log_path}/leo_ftp_helper_info.log"
+                     filePattern="${log_path}/leo_ftp_helper%d{yyyy-MM-dd}_info.log">
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="[%d][%t][%p][%c:%L] -- %m%n"/>
+            　　　
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="DailyRollingFileWarn" fileName="${log_path}/warn/leo_ftp_helper_warn.log"
+                     filePattern="${log_path}/warn/leo_ftp_helper%d{yyyy-MM-dd}_warn.log">
+            <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="[%d][%t][%p][%c:%L] -- %m%n"/>
+            　　　
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        　　　　
+        <Logger name="mylog" level="trace" additivity="false">　　　
+            <AppenderRef ref="DailyRollingFile"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="DailyRollingFile"/>
+            <AppenderRef ref="DailyRollingFileWarn"/>
+        </Root>
+    </Loggers>
+</Configuration>
