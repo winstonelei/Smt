@@ -1,3 +1,4 @@
+/*
 package com.github.limit;
 
 import com.github.jarscaner.ClasspathPackageScannerUtils;
@@ -11,6 +12,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 
+*/
 /**
  * 〈一句话功能简述〉<br>
  * 〈功能详细描述〉
@@ -18,7 +20,8 @@ import java.util.concurrent.Semaphore;
  * @author 17090718
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
- */
+ *//*
+
 public class InitApiLimitRateListener  implements ApplicationListener<ApplicationPreparedEvent>{
 
     //controller path
@@ -67,3 +70,4 @@ public class InitApiLimitRateListener  implements ApplicationListener<Applicatio
         }
     }
 }
+*/

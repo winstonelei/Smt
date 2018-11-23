@@ -9,4 +9,5 @@ package com.github.math;
  * @since [产品/模块版本] （可选）
  */
 public class MathDecimal {
+
 }

@@ -1,3 +1,4 @@
+/*
 package com.github.limit;
 
 import org.aspectj.lang.annotation.Around;
@@ -11,6 +12,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Semaphore;
 
+*/
 /**
  * 〈一句话功能简述〉<br>
  * 〈功能详细描述〉
@@ -18,7 +20,8 @@ import java.util.concurrent.Semaphore;
  * @author 17090718
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
- */
+ *//*
+
 @Aspect
 @Order(value = Ordered.HIGHEST_PRECEDENCE)
 public class ApiLimitAspect {
@@ -65,3 +68,4 @@ public class ApiLimitAspect {
     }
 
 }
+*/

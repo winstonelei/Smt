@@ -1,10 +1,13 @@
+/*
 package com.github.configUtil;
 
+*/
 /**
  *
  * 配置文件工具类
  * Created by yuliang on 2017/4/7.
- */
+ *//*
+
 public class ConfigUtils {
 
     public static String getString(String filePath, String key) {
@@ -29,3 +32,4 @@ public class ConfigUtils {
     }
 
 }
+*/
