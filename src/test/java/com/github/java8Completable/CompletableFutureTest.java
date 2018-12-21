@@ -1,7 +1,15 @@
 package com.github.java8Completable;
 
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -14,34 +22,9 @@ import java.util.concurrent.ExecutionException;
  */
 public class CompletableFutureTest {
 
-    public static void main(String[] args) {
-        //将两个CompletableFuture建立联系,通常，我们会有多个需要独立运行但又有所依赖的的任务。比如先等用于的订单处理完毕然后才发送邮件通知客户。
-        //test1();
-
-        //错误处理,为了能获取任务线程内发生的异常，你需要使用
-        //CompletableFuture 的completeExceptionally方法将导致CompletableFuture 内发生问题的异常抛出。
-       //test2();
-
-        //构建等待全部完成任务和部分执行任务
-        //test3();
-
-        /*
-        你需要将两个完
-        全不相干的 CompletableFuture 对象的结果整合起来，而且你也不希望等到第一个任务完全结
-        束才开始第二项任务。
-        */
-        //test4();
-
-
-        //响应 CompletableFuture 的 completion 事件,CompletableFuture 通过 thenAccept 方法提供了这一功能，它接收
-        //CompletableFuture 执行完毕后的返回值做参数。
-        test5();
-
-
-    }
-
-
-    public static void test1(){
+    //将两个CompletableFuture建立联系,通常，我们会有多个需要独立运行但又有所依赖的的任务。比如先等用于的订单处理完毕然后才发送邮件通知客户。
+    @Test
+    public void test1(){
         CompletableFuture<String> completableFuture1= CompletableFuture.supplyAsync(()->{
             //模拟执行耗时任务
             System.out.println("task1 doing...");
@@ -68,7 +51,6 @@ public class CompletableFutureTest {
             return "result2";
         }));
 
-
         try {
             System.out.println(completableFuture2.get());
         } catch (InterruptedException e) {
@@ -78,7 +60,10 @@ public class CompletableFutureTest {
         }
     }
 
-    public static void test2(){
+    //错误处理,为了能获取任务线程内发生的异常，你需要使用
+    //CompletableFuture 的completeExceptionally方法将导致CompletableFuture 内发生问题的异常抛出。
+    @Test
+    public void test2(){
         CompletableFuture<String> completableFuture=new CompletableFuture();
         new Thread(new Runnable() {
             @Override
@@ -87,7 +72,7 @@ public class CompletableFutureTest {
                     //模拟执行耗时任务
                     System.out.println("task doing...");
                     try {
-                        Thread.sleep(3000);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -103,17 +88,15 @@ public class CompletableFutureTest {
         try {
             result = completableFuture.get();
             System.out.println("计算结果:"+result);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-
-    public static void test3(){
-
-        CompletableFuture<String> completableFuture1 =  CompletableFuture.supplyAsync(()->{
+    //构建等待全部完成任务和部分执行任务
+    @Test
+    public  void test3(){
+        CompletableFuture<String> completableFuture1 = CompletableFuture.supplyAsync(()->{
             System.out.println("task 1 doing...");
             try {
                 Thread.sleep(3000);
@@ -135,7 +118,6 @@ public class CompletableFutureTest {
             return "result2";
         });
 
-
         CompletableFuture<Object> anyResult = CompletableFuture.anyOf(completableFuture1,completableFuture2);
 
         try {
@@ -154,8 +136,13 @@ public class CompletableFutureTest {
 
     }
 
-
-    public  static  void test4(){
+    /*
+      你需要将两个完
+      全不相干的 CompletableFuture 对象的结果整合起来，而且你也不希望等到第一个任务完全结
+      束才开始第二项任务。
+      */
+    @Test
+    public  void test4(){
         CompletableFuture<Integer> completableFuture1 = CompletableFuture.supplyAsync(() -> {
             //模拟执行耗时任务
             System.out.println("task1 doing...");
@@ -195,7 +182,10 @@ public class CompletableFutureTest {
     }
 
 
-    public static void test5(){
+    //响应 CompletableFuture 的 completion 事件,CompletableFuture 通过 thenAccept 方法提供了这一功能，它接收
+    //CompletableFuture 执行完毕后的返回值做参数。
+    @Test
+    public  void test5(){
         CompletableFuture<Integer> completableFuture1 = CompletableFuture.supplyAsync(() -> {
             //模拟执行耗时任务
             System.out.println("task1 doing...");
@@ -217,7 +207,7 @@ public class CompletableFutureTest {
                     //模拟执行耗时任务
                     System.out.println("task2 doing...");
                     try {
-                        Thread.sleep(3000);
+                        Thread.sleep(4000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -248,6 +238,51 @@ public class CompletableFutureTest {
             e.printStackTrace();
         }
 
+    }
+
+    // 全流式处理转换成CompletableFuture[]+组装成一个无返回值CompletableFuture，join等待执行完毕。返回结果whenComplete获取
+    @Test
+    public void  test6(){
+        Long start = System.currentTimeMillis();
+        // 结果集
+        List<String> list = new ArrayList<>();
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        List<Integer> taskList = Arrays.asList(2, 1, 3, 4, 5, 6, 7, 8, 9, 10);
+        // 全流式处理转换成CompletableFuture[]+组装成一个无返回值CompletableFuture，join等待执行完毕。返回结果whenComplete获取
+        CompletableFuture[] cfs = taskList.stream()
+                .map(integer -> CompletableFuture.supplyAsync(() -> calc(integer), executorService)
+                        .thenApply(h->Integer.toString(h))
+                        .whenComplete((s, e) -> {
+                            try {
+                                System.out.println("任务"+s+"完成!result="+s+"，异常 e="+e+","+new Date());
+                                list.add(s);
+                            }catch (Exception e1){
+                                System.out.println(e1);
+                            }
+                        })
+                ).toArray(CompletableFuture[]::new);
+        // 封装后无返回值，必须自己whenComplete()获取
+        CompletableFuture.allOf(cfs).join();
+        System.out.println("list="+list+",耗时="+(System.currentTimeMillis()-start));
+    }
+
+    public static Integer calc(Integer i) {
+        try {
+            if (i == 1) {
+                Thread.sleep(3000);//任务1耗时3秒
+            } else if (i == 5) {
+                Thread.sleep(5000);//任务5耗时5秒
+                throw new NumberFormatException("抛异常了");
+            } else {
+                Thread.sleep(1000);//其它任务耗时1秒
+            }
+            /*System.out.println("task线程：" + Thread.currentThread().getName()
+                    + "任务i=" + i + ",完成！+" + new Date());*/
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+        return i;
     }
 
 }
