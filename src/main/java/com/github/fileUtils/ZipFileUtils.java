@@ -1,4 +1,4 @@
-package com.github.zipFile;
+package com.github.fileUtils;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
