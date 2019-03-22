@@ -13,6 +13,7 @@ import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -24,8 +25,47 @@ import java.util.stream.Collectors;
  * @since [产品/模块版本] （可选）
  */
 public class Java8Prictase {
+    //查找集合中的第一个对象
+    @Test
+    public void testFindOne(){
+        List<Person> listPersons = new ArrayList<>();
+        Person p1 = new Person();
+        p1.setAge(20);
+        p1.setName("zs");
+        listPersons.add(p1);
 
-    //实现数据分组
+        Person p3 = new Person();
+        p3.setAge(21);
+        p3.setName("lisi");
+        listPersons.add(p3);
+
+        Optional<Person> personOptional =listPersons.stream().filter(a->"lisi".equalsIgnoreCase(a.getName())).findFirst();
+        System.out.println(personOptional.get().getName());
+    }
+
+    //查找集合中的所有对象
+    @Test
+    public void testFindAll(){
+        List<Person> listPersons = new ArrayList<>();
+        Person p1 = new Person();
+        p1.setAge(20);
+        p1.setName("zs");
+        listPersons.add(p1);
+
+        Person p3 = new Person();
+        p3.setAge(21);
+        p3.setName("lisi");
+        listPersons.add(p3);
+
+        List<Person> personList=listPersons.stream().filter(a->"lisi".equalsIgnoreCase(a.getName())).collect(Collectors.toList());
+        System.out.println(personList.size());
+
+        List<String> nameList = listPersons.stream().map(Person::getName).collect(Collectors.toList());
+        System.out.println(nameList);
+    }
+
+
+    //实现根据某个属性数据分组
     @Test
     public void testGroupBy(){
         List<Person> listPersons = new ArrayList<>();
