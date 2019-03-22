@@ -291,7 +291,11 @@
         </dependency>
    <!--ftpdownload end-->
 
-
+        <dependency>
+            <groupId>org.apache.any23</groupId>
+            <artifactId>apache-any23-encoding</artifactId>
+            <version>2.2</version>
+        </dependency>
     </dependencies>
 
 </project>
