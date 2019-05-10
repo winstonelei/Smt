@@ -18,16 +18,19 @@ public class MultiThreadQuerySupportTest {
 
         MyMultiQuery multiQuery = new MyMultiQuery();
         multiQuery.setMaxThreadsPerQuery(3);
-        multiQuery.setQueryTimeout(5000);
+        multiQuery.setQueryTimeout(10000);
         try {
             List<Person> list = new ArrayList<>();
-            for(int i=0;i<=5;i++){
+            for(int i=0;i<=10;i++){
                 Person p = new Person();
                 p.setAge(10+i);
                 p.setName("tt");
                 list.add(p);
             }
-            List<Boolean> resultList =  multiQuery.query(list);
+            List<Person> resultList =  multiQuery.query(list);
+            for(Person person : resultList){
+                System.out.println("new PersonName = " +person.getName());
+            }
             System.out.println(resultList.size());
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,15 +40,17 @@ public class MultiThreadQuerySupportTest {
     }
 }
 
-class MyMultiQuery extends MultiThreadQuerySupport<Person,Boolean>{
+class MyMultiQuery extends MultiThreadQuerySupport<Person,Person>{
     @Override
-    protected Boolean queryOne(Person person) {
+    protected Person queryOne(Person person) {
         try {
             System.out.println(Thread.currentThread().getName());
             Thread.sleep(7000);
+            person.setName("Hello" + person.getName());
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return true;
+        return person;
     }
 }

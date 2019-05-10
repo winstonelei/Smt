@@ -1,9 +1,12 @@
 package com.github.fileUtils;
 
+import org.apache.commons.io.Charsets;
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import com.github.fileUtils.*;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,4 +30,16 @@ public class TestFileUtils {
        File outFile= new File("D:\\tmp\\winstone\\aa\\c.txt");
        FileUtil.mergeFiles(outFile,listFiles);
     }
+
+    @Test
+    public void testReadLine(){
+        try {
+            System.out.println(FileUtils.readLines(new File("D:\\tmp\\winstone\\aa\\a.txt"), Charsets.toCharset("UTF-8")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+        }
+    }
+
+
 }
