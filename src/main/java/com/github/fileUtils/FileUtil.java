@@ -1,6 +1,9 @@
 package com.github.fileUtils;
 
 
+import org.apache.commons.io.Charsets;
+import org.apache.commons.io.FileUtils;
+
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
@@ -57,6 +60,7 @@ public class FileUtil {
         OutputStream os;
         try {
             os = new FileOutputStream(zipFile);
+
             BufferedOutputStream bos = new BufferedOutputStream(os);
             ZipOutputStream zos = new ZipOutputStream(bos);
             File file = new File(sourceDir);

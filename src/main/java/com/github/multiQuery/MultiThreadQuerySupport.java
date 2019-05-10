@@ -13,6 +13,7 @@ import java.util.concurrent.*;
 public abstract class MultiThreadQuerySupport<P,R> {
 
 
+
     private int maxThreadsPeryQuery = 15;
 
     private int queryTimeOut = 10000;

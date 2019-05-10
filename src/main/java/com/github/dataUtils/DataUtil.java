@@ -20,7 +20,13 @@ public class DataUtil {
 		   } 
 		   return true; 
 	}
-	
+
+	/**
+	 * 排序，根据jsonArray中的某个字段进行排序
+	 * @param array
+	 * @param field
+	 * @param order
+	 */
 	public static void sort(JSONArray array, final String field, final String order) {
 		Collections.sort(array, new Comparator<Object>() {
 

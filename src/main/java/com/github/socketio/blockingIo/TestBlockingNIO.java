@@ -1,6 +1,6 @@
 package com.github.socketio.blockingIo;
 
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;

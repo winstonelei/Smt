@@ -1,5 +1,7 @@
 package com.github.socketio.nio.buffer;
 
+import org.junit.jupiter.api.Test;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -18,8 +20,6 @@ import java.nio.file.StandardOpenOption;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import org.testng.annotations.Test;
-
 /*
  * 一、通道（Channel）：用于源节点与目标节点的连接。在 Java NIO 中负责缓冲区中数据的传输。Channel 本身不存储数据，因此需要配合缓冲区进行传输。
  * 
@@ -61,7 +61,7 @@ public class TestChannel {
 	
 	//字符集
 	@Test
-	public void test6() throws IOException{
+	public void testReadAndWrite() throws IOException{
 		Charset cs1 = Charset.forName("GBK");
 		
 		//获取编码器

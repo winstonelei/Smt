@@ -1,6 +1,7 @@
 package com.github.socketio.nio.buffer;
 
-import org.testng.annotations.Test;
+
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
