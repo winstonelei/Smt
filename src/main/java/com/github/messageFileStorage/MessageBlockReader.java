@@ -22,6 +22,9 @@ package com.github.messageFileStorage;
 import org.xerial.snappy.SnappyInputStream;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.zip.GZIPInputStream;
 
 /**
@@ -96,4 +99,16 @@ public class MessageBlockReader {
 			return null;
 		}
 	}
+
+	public static void main(String[] args) {
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date = new Date();
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.add(5, -1);
+		Date yesterDay = calendar.getTime();
+		System.out.println(sf.format(date));
+		System.out.println(sf.format(yesterDay));
+	}
+
 }

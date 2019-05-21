@@ -1,4 +1,4 @@
-package com.github.collections;
+package com.github.colllection;
 
 import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps;
@@ -10,7 +10,7 @@ import java.util.*;
  * 〈一句话功能简述〉<br>
  * 〈功能详细描述〉
  *
- * 集合类测试
+ * 集合类测试 Map 相关方法判断是否含有相同key
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
  */
