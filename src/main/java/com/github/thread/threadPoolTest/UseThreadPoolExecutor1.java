@@ -32,14 +32,14 @@ public class UseThreadPoolExecutor1 {
 		MyTask mt3 = new MyTask(3, "任务3");
 		MyTask mt4 = new MyTask(4, "任务4");
 		MyTask mt5 = new MyTask(5, "任务5");
-		MyTask mt6 = new MyTask(6, "任务6");
+		//MyTask mt6 = new MyTask(6, "任务6");
 		
 		pool.execute(mt1);
 		pool.execute(mt2);
 		pool.execute(mt3);
 		pool.execute(mt4);
 		pool.execute(mt5);
-		pool.execute(mt6);
+		//pool.execute(mt6);
 		
 		pool.shutdown();
 		

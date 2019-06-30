@@ -117,9 +117,10 @@ public class MessageId {
 	}
 
 	public String getIpAddress() {
-		StringBuilder sb = new StringBuilder();
+		return  m_ipAddressInHex;
+		/*StringBuilder sb = new StringBuilder();
 		String local = m_ipAddressInHex;
-		int index = local.lastIndexOf(".");
+		*//*int index = local.lastIndexOf(".");
 
 		if (index > 0) {
 			local = local.substring(0, index);
@@ -149,9 +150,9 @@ public class MessageId {
 			}
 
 			sb.append(value);
-		}
+		}*//*
 
-		return sb.toString();
+		return sb.toString();*/
 	}
 
 	public String getIpAddressInHex() {

@@ -1,4 +1,4 @@
-package com.github.dataUtils;
+package com.github.jsonDataUtils;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;

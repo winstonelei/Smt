@@ -58,7 +58,7 @@ public class BufferTest {
 		String str = "abcde";
 		
 		ByteBuffer buf = ByteBuffer.allocate(1024);
-		
+
 		buf.put(str.getBytes());
 		
 		buf.flip();
@@ -157,10 +157,7 @@ public class BufferTest {
 
 			inMappedBuf.putInt(4,100);
 
-
-
 			System.out.println(inMappedBuf.getInt(4));
-
 
 		} catch (IOException e) {
 			e.printStackTrace();

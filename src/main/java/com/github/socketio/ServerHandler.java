@@ -16,7 +16,7 @@ public class ServerHandler implements Runnable{
 	
 	@Override
 	public void run() {
-		BufferedReader in = null;
+		/*BufferedReader in = null;
 		PrintWriter out = null;
 		try {
 			in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
@@ -27,18 +27,20 @@ public class ServerHandler implements Runnable{
 				if(body == null) break;
 				System.out.println("Server :" + body);
 				out.println("服务器端回送响的应数据.");
+			}*/
+		PrintWriter out = null;
+		try {
+			out = new PrintWriter(this.socket.getOutputStream(), true);
+			String body = null;
+			while(true){
+                Thread.sleep(500);
+				out.println("hello word");
+				out.print("Or to take arms against a sea of troubles");
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(in != null){
-				try {
-					in.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
 			if(out != null){
 				try {
 					out.close();

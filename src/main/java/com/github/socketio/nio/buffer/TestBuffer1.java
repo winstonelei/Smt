@@ -24,7 +24,7 @@ public class TestBuffer1 {
 		System.out.println("获取下标为1的元素：" + buf.get(1));
 		System.out.println("get(index)方法，position位置不改变：" + buf);
 		buf.put(1, 4);
-		System.out.println("put(index, change)方法，position位置不变：" + buf);;
+		System.out.println("put(index, change)方法，position位置不变：" + buf);
 
 		for (int i = 0; i < buf.limit(); i++) {
 			//调用get方法会使其缓冲区位置（position）向后递增一位

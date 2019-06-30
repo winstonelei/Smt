@@ -11,7 +11,7 @@ public class CaseRunner4_1 {
 
   public static void main(String[] args) throws Exception {
     if (0 == args.length) {
-      args = new String[] { "http://archive.apache.org/dist/flume/1.6.0/apache-flume-1.6.0-bin.tar.gz", "4", "3" };
+      args = new String[] { "https://downloads.lightbend.com/scala/2.11.6/scala-2.11.6.msi", "4", "3" };
     }
     main0(args);
   }

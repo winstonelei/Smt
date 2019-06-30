@@ -137,8 +137,17 @@ public final class PatternKit {
 	 * @return
 	 */
 	public static boolean isNumber(String str) {
-		String regex = "^[1-9]\\d*$";
-		return Pattern.matches(regex,str);
+		/*String regex = "^[1-9]\\d*$";
+		return Pattern.matches(regex,str);*/
+	/*	if (str == null)
+			return false;
+		Pattern pattern = Pattern.compile("^-?\\d+(\\.\\d+)?$");
+		return pattern.matcher(str).matches();*/
+		java.util.regex.Pattern pattern=java.util.regex.Pattern.compile("[0-9]*");
+		java.util.regex.Matcher match=pattern.matcher(str);
+
+
+		return match.matches();
 	}
 	
 	/**
@@ -189,5 +198,12 @@ public final class PatternKit {
 	public static boolean isIpAddress(String ipAddress) {
 		String regex = "[1-9](\\d{1,2})?\\.(0|([1-9](\\d{1,2})?))\\.(0|([1-9](\\d{1,2})?))\\.(0|([1-9](\\d{1,2})?))";
 		return Pattern.matches(regex, ipAddress);
+	}
+
+
+	public static void main(String[] args) {
+		System.out.println(isNumber(" 123a"));
+
+
 	}
 }
