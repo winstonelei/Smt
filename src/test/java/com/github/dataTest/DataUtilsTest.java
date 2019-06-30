@@ -2,7 +2,7 @@ package com.github.dataTest;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.github.dataUtils.DataUtil;
+import com.github.jsonDataUtils.DataUtil;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -12,7 +12,8 @@ import java.util.List;
  * 〈一句话功能简述〉<br>
  * 〈功能详细描述〉
  *
- * @author 17090718
+ * @author wagnlei
+ *  JsonArray 中的数据排序
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
  */

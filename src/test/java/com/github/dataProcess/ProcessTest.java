@@ -22,7 +22,7 @@ import static org.junit.Assert.assertTrue;
 public class ProcessTest {
     private List<Integer> source;
     private List<Integer> target;
-    private int span = 128;
+    private int span = 256;
 
     @Before
     public void setUp() throws Exception {
@@ -47,7 +47,7 @@ public class ProcessTest {
     }
 
     private class MockDataProvider extends LongSliceDataProvider<Integer> {
-        private int pageSize = 100;
+        private int pageSize = 200;
 
         public MockDataProvider() {
             super(0, source.size(), span, true);
