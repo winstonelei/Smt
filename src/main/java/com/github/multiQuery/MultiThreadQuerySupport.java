@@ -13,13 +13,26 @@ import java.util.concurrent.*;
 public abstract class MultiThreadQuerySupport<P,R> {
 
 
-
     private int maxThreadsPeryQuery = 15;
 
     private int queryTimeOut = 10000;
 
-    private ThreadPoolExecutor pool = new ThreadPoolExecutor(maxThreadsPeryQuery, maxThreadsPeryQuery, 0L,
-            TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
+    //参数初始化
+    private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
+    //核心线程数量大小
+    private static final int corePoolSize = Math.max(2, Math.min(CPU_COUNT - 1, 4));
+    //线程池最大容纳线程数
+    private static final int maximumPoolSize = CPU_COUNT * 2 + 1;
+    //线程空闲后的存活时长
+    private static final int keepAliveTime = 30;
+
+/*
+    private ThreadPoolExecutor pool = new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime,
+            TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
+*/
+
+    private ThreadPoolExecutor pool = new ThreadPoolExecutor(maxThreadsPeryQuery, 50, keepAliveTime,
+            TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 
     private ThreadPoolExecutor createExecutor() {
         return pool;

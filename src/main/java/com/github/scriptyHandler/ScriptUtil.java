@@ -2,8 +2,10 @@ package com.github.scriptyHandler;
 
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
+import org.apache.commons.exec.ExecuteWatchdog;
 import org.apache.commons.exec.PumpStreamHandler;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -19,7 +21,6 @@ public class ScriptUtil {
      * @throws IOException
      */
     public static void markScriptFile(String scriptFileName, String content) throws IOException {
-        // make file,   filePath/gluesource/666-123456789.py
         FileOutputStream fileOutputStream = null;
         try {
             fileOutputStream = new FileOutputStream(scriptFileName);
@@ -70,6 +71,7 @@ public class ScriptUtil {
             DefaultExecutor exec = new DefaultExecutor();
             exec.setExitValues(null);
             exec.setStreamHandler(streamHandler);
+
             int exitValue = exec.execute(commandline);  // exit code: 0=success, 1=error
             return exitValue;
         } catch (Exception e) {
@@ -85,6 +87,34 @@ public class ScriptUtil {
 
             }
         }
+    }
+
+    public static int execScript(String command) throws IOException {
+        CommandLine cmdLine = CommandLine.parse(command);;
+        ExecuteWatchdog watchdog = new ExecuteWatchdog(8000);//设置超时时间：8秒
+        DefaultExecutor executor = new DefaultExecutor();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        executor.setStreamHandler(new PumpStreamHandler(baos, baos));
+        executor.setWatchdog(watchdog);
+        int exitValue = executor.execute(cmdLine);
+        String result = baos.toString().trim();
+        System.out.println(result);
+        return exitValue;
+    }
+
+    public static int execScript(String command,String... params ) throws IOException {
+        CommandLine commandline = new CommandLine(command);
+        if (params!=null && params.length>0) {
+            commandline.addArguments(params);
+        }
+        ExecuteWatchdog watchdog = new ExecuteWatchdog(8000);//设置超时时间：8秒
+        DefaultExecutor executor = new DefaultExecutor();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        executor.setStreamHandler(new PumpStreamHandler(baos, baos));
+        executor.setWatchdog(watchdog);
+        int exitValue = executor.execute(commandline);
+        String result = baos.toString().trim();
+        return exitValue;
     }
 
 }
