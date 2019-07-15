@@ -3,8 +3,13 @@ package com.github.scriptHandler;
 import com.github.scriptyHandler.JobFileAppender;
 import com.github.scriptyHandler.JobLogger;
 import com.github.scriptyHandler.ScriptUtil;
+import org.apache.commons.exec.CommandLine;
+import org.apache.commons.exec.DefaultExecutor;
+import org.apache.commons.exec.ExecuteWatchdog;
+import org.apache.commons.exec.PumpStreamHandler;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -64,6 +69,20 @@ public class ScriptTest {
             e.printStackTrace();
         }
 
+    }
+
+    @Test
+    public void testPerl(){
+        try {
+           // CommandLine cmdLine = CommandLine.parse("ping www.baidu1qq.com -t");
+            //CommandLine cmdLine = CommandLine.parse("perl D:\\tmp\\a.perl");
+
+            int result = ScriptUtil.execScript("perl D:\\tmp\\a.perl");
+            System.out.println(result);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

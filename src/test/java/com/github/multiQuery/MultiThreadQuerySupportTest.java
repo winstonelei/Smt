@@ -14,24 +14,35 @@ import java.util.concurrent.CountDownLatch;
  */
 public class MultiThreadQuerySupportTest {
 
+    /**
+     * 10001
+     * costTime=117
+     * @param args
+     */
     public static void main(String[] args) {
-
         MyMultiQuery multiQuery = new MyMultiQuery();
-        multiQuery.setMaxThreadsPerQuery(3);
-        multiQuery.setQueryTimeout(10000);
+/*        multiQuery.setMaxThreadsPerQuery(3);
+        multiQuery.setQueryTimeout(10000);*/
+
         try {
-            List<Person> list = new ArrayList<>();
-            for(int i=0;i<=10;i++){
-                Person p = new Person();
-                p.setAge(10+i);
-                p.setName("tt");
-                list.add(p);
-            }
-            List<Person> resultList =  multiQuery.query(list);
-            for(Person person : resultList){
+            for(int j=0;j<10;j++){
+                List<Person> list = new ArrayList<>();
+                for(int i=0;i<=1_0000;i++){
+                    Person p = new Person();
+                    p.setAge(10+i);
+                    p.setName("tt");
+                    list.add(p);
+                }
+                long start = System.currentTimeMillis();
+                List<Person> resultList =  multiQuery.query(list);
+        /*    for(Person person : resultList){
                 System.out.println("new PersonName = " +person.getName());
+            }*/
+                System.out.println(resultList.size());
+                long end = System.currentTimeMillis();
+                System.out.println("第"+j+"次 costTime="+(end-start));
             }
-            System.out.println(resultList.size());
+
         } catch (Exception e) {
             e.printStackTrace();
         }finally {
@@ -44,11 +55,11 @@ class MyMultiQuery extends MultiThreadQuerySupport<Person,Person>{
     @Override
     protected Person queryOne(Person person) {
         try {
-            System.out.println(Thread.currentThread().getName());
-            Thread.sleep(7000);
-            person.setName("Hello" + person.getName());
+ /*           System.out.println(Thread.currentThread().getName());
+            Thread.sleep(7000);*/
 
-        } catch (InterruptedException e) {
+            person.setName("Hello" + person.getName());
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return person;

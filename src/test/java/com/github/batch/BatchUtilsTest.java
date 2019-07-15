@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -18,6 +19,20 @@ public class BatchUtilsTest {
 
     @Test
     public void testBatch(){
+      /*  for(int i=0;i<10;i++){
+            List<String> list = new ArrayList();
+            list.add("abc");
+            list.add("def");
+            list.add("hgc");
+            list.add("eee");
+            list.add("aaa");
+            Random r = new Random();
+            int n2 = r.nextInt(5);
+            System.out.println(list.get(n2));
+        }*/
+
+
+       // int index = list.get()
 
         List<Job> jobs = new ArrayList<>();
         for(int i=0;i<1;i++){

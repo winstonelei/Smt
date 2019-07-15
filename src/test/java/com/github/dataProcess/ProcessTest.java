@@ -26,7 +26,7 @@ public class ProcessTest {
 
     @Before
     public void setUp() throws Exception {
-        int testDataSize = 1_000;
+        int testDataSize = 1_0000;
         source = new ArrayList<>(testDataSize);
         Random random = new Random();
         for (int i = 0; i < testDataSize; i++) {
@@ -37,6 +37,7 @@ public class ProcessTest {
 
     @Test
     public void process() {
+        long start = System.currentTimeMillis();
         DataProvider<Integer, Long> provider = new MockDataProvider();
         DefaultDataProcessor migrator = new DefaultDataProcessor<>(provider);
         migrator.setLaunchInterval(0);
@@ -44,7 +45,12 @@ public class ProcessTest {
         // 判断两个list完全相等
         assertTrue(source.containsAll(target));
         assertTrue(target.containsAll(source));
+        long end = System.currentTimeMillis();
+        System.out.println("costTime="+(end-start));
     }
+
+
+
 
     private class MockDataProvider extends LongSliceDataProvider<Integer> {
         private int pageSize = 200;
