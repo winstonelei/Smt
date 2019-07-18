@@ -1,4 +1,4 @@
-package com.github.parlizable;
+package com.github.parlizableSplitTask;
 
 /**
  * 〈一句话功能简述〉<br>

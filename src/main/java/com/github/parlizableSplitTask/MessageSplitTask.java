@@ -1,7 +1,6 @@
-package com.github.parlizable;
+package com.github.parlizableSplitTask;
 
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang.ArrayUtils;
 
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -28,7 +27,7 @@ public class MessageSplitTask implements Callable<List<Integer>> {
     @Override
     public List<Integer> call() throws Exception {
         if(CollectionUtils.isNotEmpty(list)){
-            System.out.println("MessageSplitTask"+list);
+            System.out.println("MessageSplitTask   " + Thread.currentThread().getName()+list);
         }
         Thread.sleep(1000);
         endLatch.countDown();

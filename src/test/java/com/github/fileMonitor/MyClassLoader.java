@@ -1,4 +1,4 @@
-package com.github.monitor;
+package com.github.fileMonitor;
 
 import java.io.File;
 import java.io.FileFilter;

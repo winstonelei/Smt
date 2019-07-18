@@ -1,6 +1,5 @@
-package com.github.parlizable;
+package com.github.parlizableSplitTask;
 
-import com.sun.media.jfxmedia.logging.Logger;
 import org.apache.commons.lang3.tuple.MutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 

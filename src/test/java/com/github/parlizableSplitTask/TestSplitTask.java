@@ -1,6 +1,6 @@
 package com.github.parlizableSplitTask;
 
-import com.github.parlizable.MessageSplitTask;
+import com.github.guavaFuture.NamedThreadFactory;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class TestSplitTask {
     @Test
     public void testSplit()throws  Exception{
         List<Integer> list = new ArrayList<Integer>();
-        for(int i=0;i<183;i++){
+        for(int i=0;i<18300;i++){
             list.add(i);
         }
         System.out.println(list);
@@ -39,19 +39,21 @@ public class TestSplitTask {
         //最后一个线程需要实现补数操作
         int CPU_COUNT = Runtime.getRuntime().availableProcessors();
         //核心线程数量大小
-        final int corePoolSize = Math.max(2, Math.min(CPU_COUNT - 1, 4));
+        final int corePoolSize = 10;//Math.max(2, Math.min(CPU_COUNT - 1, 4));//
         //线程池最大容纳线程数
-        final int maximumPoolSize = CPU_COUNT * 2 + 1;
+        final int maximumPoolSize = 20;//CPU_COUNT * 2 + 1;//
+        System.out.println("corePoolSize="+corePoolSize);
+        System.out.println("maximumPoolSize="+maximumPoolSize);
         //线程空闲后的存活时长
         final int keepAliveTime = 30;
         ThreadPoolExecutor pool = new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime,
-                TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
+                TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(),   new NamedThreadFactory("Pool"));
         Integer allCount = list.size();
         Integer threadCount = 10;
         Integer blocks = allCount / threadCount;
         CountDownLatch endLatch = new CountDownLatch(threadCount);
         List<Future<List<Integer>>> allResult = new ArrayList<>();
-
+        long startTime = System.currentTimeMillis();
         for(int i=1;i<= threadCount ;i++){
             Map<String,Integer> map = new HashMap<>();
             map.put("begin",(i-1)*blocks+1);
@@ -71,6 +73,8 @@ public class TestSplitTask {
             List<Integer> futureRes = (List<Integer>) future.get(1000,TimeUnit.SECONDS);
             System.out.println("future RES "+futureRes);
         }
+        long endTime = System.currentTimeMillis();
+        System.out.println("costTime="+(endTime-startTime));
         pool.shutdown();
     }
 

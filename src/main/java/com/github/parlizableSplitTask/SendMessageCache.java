@@ -1,4 +1,4 @@
-package com.github.parlizable;
+package com.github.parlizableSplitTask;
 
 import org.apache.commons.lang3.tuple.Pair;
 

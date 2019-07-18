@@ -1,9 +1,7 @@
-package com.github.parlizable;
+package com.github.parlizableSplitTask;
 
-import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang.ArrayUtils;
 
-import java.util.Arrays;
 import java.util.concurrent.Callable;
 
 /**
