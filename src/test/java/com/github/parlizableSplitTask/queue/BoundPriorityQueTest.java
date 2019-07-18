@@ -1,4 +1,4 @@
-package com.github.parlizable.queue;
+package com.github.parlizableSplitTask.queue;
 
 import com.github.thread.BoundPriorityQueue.BoundedPriorityQueue;
 
