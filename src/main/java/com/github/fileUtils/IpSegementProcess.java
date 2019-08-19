@@ -35,7 +35,7 @@ public class IpSegementProcess {
         return 0x00000000ffffffffl & (b[0] << 24 | (b[1] & 0xff) << 16 | (b[2] & 0xff) << 8 | (b[3] & 0xff));
     }
 
-    static String filePath="D:\\tmp\\spark\\ipin\\12345.txt";
+    static String filePath="D:\\tmp\\spark\\ipin\\ipsege.csv";
     static  String fileOutLPath="D:\\tmp\\spark\\ipin\\houseipout.txt";
     static  String errorOutLPath="D:\\tmp\\spark\\ipin\\erroripout.txt";
 
@@ -46,7 +46,7 @@ public class IpSegementProcess {
         List<String> logList = FileUtils.readLines(new File(filePath), Charsets.toCharset("UTF-8"));
         List<String> ips = logList.stream().filter(item->item.split(",").length>=2).collect(Collectors.toList());
         List<String> errorList = new ArrayList<>();
-        for(String str : ips){
+       /* for(String str : ips){
             String[] arr = str.split(",");
             String startip=arr[0];
             String endtip=arr[1];
@@ -56,13 +56,13 @@ public class IpSegementProcess {
             while(start<end){
                 start =start+1L;
                 count++;
-                if(count==1000){
+                if(count==5000){
                     System.out.println("Òì³£ip"+str);
                     errorList.add(str);
                     break;
                 }
             }
-        }
+        }*/
 
         int k=0;
         List<IpHid> list = new ArrayList<>();
@@ -89,7 +89,7 @@ public class IpSegementProcess {
                 list.add(ipHid);
             }
         }
-        outputError(errorList);
+       // outputError(errorList);
         output(list);
         System.out.println("done");
         //Thread.sleep(100000000);
