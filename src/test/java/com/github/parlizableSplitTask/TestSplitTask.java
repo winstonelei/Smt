@@ -22,7 +22,7 @@ public class TestSplitTask {
     @Test
     public void testSplit()throws  Exception{
         List<Integer> list = new ArrayList<Integer>();
-        for(int i=0;i<18300;i++){
+        for(int i=0;i<11;i++){
             list.add(i);
         }
         System.out.println(list);
@@ -50,7 +50,10 @@ public class TestSplitTask {
                 TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(),   new NamedThreadFactory("Pool"));
         Integer allCount = list.size();
         Integer threadCount = 10;
-        Integer blocks = allCount / threadCount;
+        Integer blocks = allCount / threadCount==0?1:allCount / threadCount;
+        if(allCount<=threadCount){
+            threadCount=allCount;
+        }
         CountDownLatch endLatch = new CountDownLatch(threadCount);
         List<Future<List<Integer>>> allResult = new ArrayList<>();
         long startTime = System.currentTimeMillis();

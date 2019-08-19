@@ -14,7 +14,7 @@ import java.util.*;
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
  */
-public class CollectionsTest {
+public class GuavaCollectionTest {
     public static void main(String[] args) {
 
         Map<String,Integer> map1 = new HashMap<>();

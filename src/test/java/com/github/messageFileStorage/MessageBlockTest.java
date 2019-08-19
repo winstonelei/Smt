@@ -47,6 +47,7 @@ public class MessageBlockTest {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream(4);
 		DataOutputStream out = new DataOutputStream(new SnappyOutputStream(baos));
 
+
 		out.writeInt(data1.getBytes().length);
 		out.writeBytes(data1);
 		out.close();

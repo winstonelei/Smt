@@ -35,14 +35,14 @@ public class BatchUtilsTest {
        // int index = list.get()
 
         List<Job> jobs = new ArrayList<>();
-        for(int i=0;i<1;i++){
+        for(int i=0;i<19;i++){
             Job job = new Job();
             job.setId(i);
             job.setName("name"+i);
             jobs.add(job);
         }
         int size = jobs.size();
-
+        System.out.println(size/BATCH_SIZE);
         BatchUtils.batchExecute(size, BATCH_SIZE, jobs, new BatchUtils.Executor<Job>() {
             @Override
             public boolean execute(List<Job> list) {
