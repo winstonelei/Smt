@@ -80,6 +80,45 @@ public class AppendFile {
     }
 
 
+    public static void test(String path,String line) {
+        //  File firstFile = new File("D:\\tmp\\ip\\1.txt");
+        File secondFile = new File(path);
+        //BufferedReader in = null;
+        BufferedWriter out = null;
+        try {
+            //加入编码字符集
+            //    in = new BufferedReader(new InputStreamReader(new FileInputStream(firstFile), "gbk"));
+            //加入编码字符集
+            // out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(secondFile,true), "gbk"));
+            out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(secondFile,true), "UTF-8"));
+            //String line = "";
+            out.write(line + "\r\n");
+           /* while ((line = in.readLine()) != null) {
+                System.out.println(line);
+
+            }*/
+        } catch (FileNotFoundException e) {
+            System.out.println("file is not fond");
+        } catch (IOException e) {
+            System.out.println("Read or write Exceptioned");
+        } finally {
+       /*     if (null != in) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }*/
+            if (null != out) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
     public static void writeFileByBytes(byte[] bytes, String fileName) {
 
         try {
