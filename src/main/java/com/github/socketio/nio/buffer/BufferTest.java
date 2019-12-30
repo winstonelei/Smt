@@ -56,13 +56,9 @@ public class BufferTest {
 	@Test
 	public void test2(){
 		String str = "abcde";
-		
 		ByteBuffer buf = ByteBuffer.allocate(1024);
-
 		buf.put(str.getBytes());
-		
 		buf.flip();
-		
 		byte[] dst = new byte[buf.limit()];
 		buf.get(dst, 0, 2);
 		System.out.println(new String(dst, 0, 2));
@@ -70,7 +66,7 @@ public class BufferTest {
 		
 		//mark() : 标记
 		buf.mark();
-		
+		System.out.println(buf.position());
 		buf.get(dst, 2, 2);
 		System.out.println(new String(dst, 2, 2));
 		System.out.println(buf.position());

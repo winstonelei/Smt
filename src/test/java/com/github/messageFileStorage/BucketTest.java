@@ -1,5 +1,7 @@
-package com.github.fileStorage;
+package com.github.messageFileStorage;
 
+import com.github.fileStorage.LocalStringBucket;
+import com.github.fileStorage.LocalStringBucketManager;
 import org.junit.Test;
 
 import java.util.Date;
