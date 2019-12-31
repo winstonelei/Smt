@@ -14,7 +14,7 @@ import com.github.multithreadRead.IHandle;
 public class BigFileReadTest {
 
     public static void main(String[] args) {
-        BigFileReader.Builder builder = new BigFileReader.Builder("D:\\tmp\\reliability.txt", new IHandle() {
+        BigFileReader.Builder builder = new BigFileReader.Builder("D:\\slview\\nms\\data\\uddata\\bak\\log1571195655796.txt", new IHandle() {
             @Override
             public void handle(String line) {
                 System.out.println(line);
