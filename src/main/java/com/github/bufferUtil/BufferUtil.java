@@ -244,4 +244,46 @@ public class BufferUtil {
 /*	public static ByteBuffer createUtf8(CharSequence data) {
 		return create(StrUtil.utf8Bytes(data));
 	}*/
+
+	/**
+	 * 解析int类型
+	 * @param bb
+	 * @param length
+	 * @return
+	 */
+	public static int parseInt(ByteBuffer bb, int length) {
+		int l = 0;
+		for (int i = 0; i < length; i++) {
+			l <<= 8;
+			l |= bb.get() & 0xff;
+		}
+		return l;
+	}
+
+
+	/**
+	 * 解析long类型
+	 * @param bb
+	 * @param length
+	 * @return
+	 */
+	public static  long parseLong(ByteBuffer bb, int length) {
+		long l = 0;
+		for (int i = 0; i < length; i++) {
+			l <<= 8;
+			l |= bb.get() & 0xff;
+		}
+		return l;
+	}
+
+
+
+	public static byte[] toBytes(int number){
+		byte[] bytes = new byte[4];
+		bytes[0] = (byte)number;
+		bytes[1] = (byte) (number >> 8);
+		bytes[2] = (byte) (number >> 16);
+		bytes[3] = (byte) (number >> 24);
+		return bytes;
+	}
 }

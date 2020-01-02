@@ -1,19 +1,11 @@
 package com.github.bufferUtil;
 
 
-import java.io.StringReader;
-import java.io.StringWriter;
-import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
-import java.text.MessageFormat;
-import java.util.*;
-import java.util.Map.Entry;
-import java.util.regex.Pattern;
 
 /**
  * 字符串工具类
  * 
- * @author xiaoleilu
  *
  */
 public class StrUtil {
@@ -228,7 +220,7 @@ public class StrUtil {
 	 * @param obj 对象
 	 * @return 字符串
 	 */
-/*	public static String utf8Str(Object obj) {
-		return str(obj, Charset.forName("UTF-8"));
-	}*/
+	public static String utf8Str(Object obj) {
+		return str((byte[]) obj, Charset.defaultCharset());
+	}
 }

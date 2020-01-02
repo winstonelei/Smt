@@ -5,8 +5,6 @@ package com.github.bufferUtil;
  * 字符工具类<br>
  * 部分工具来自于Apache Commons系列
  * 
- * @author looly
- * @since 4.0.1
  */
 public class CharUtil {
 
