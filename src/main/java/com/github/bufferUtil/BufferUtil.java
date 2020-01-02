@@ -277,7 +277,11 @@ public class BufferUtil {
 	}
 
 
-
+	/**
+	 * int 转换成字节数组
+	 * @param number
+	 * @return
+	 */
 	public static byte[] toBytes(int number){
 		byte[] bytes = new byte[4];
 		bytes[0] = (byte)number;

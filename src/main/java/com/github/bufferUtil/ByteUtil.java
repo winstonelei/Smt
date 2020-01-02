@@ -1,14 +1,31 @@
 package com.github.bufferUtil;
 
 public  class ByteUtil {
+
+    /**
+     * int 转换成字节
+     * @param i
+     * @return
+     */
     public static byte IntToByte(int i) {
         return (byte) i;
     }
 
+    /**
+     * 字节转换成int
+     * @param abyte0
+     * @param offset
+     * @return
+     */
     public static int BytesToInt(byte abyte0[], int offset) {
         return (int) getNumber(abyte0, offset, 2);
     }
 
+    /**
+     * int 转换成字节数据
+     * @param i
+     * @return
+     */
     public static byte[] IntToBytes(int i) {
         byte abyte0[] = new byte[2];
         abyte0[1] = (byte) (0xff & i);

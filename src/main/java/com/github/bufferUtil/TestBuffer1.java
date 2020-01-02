@@ -58,6 +58,7 @@ public class TestBuffer1 {
 	public void test3(){
 		// 3 其他方法
 		IntBuffer buf1 = IntBuffer.allocate(10);
+		//int[] arr = new int[]{1,2,5};
 		int[] arr = new int[]{1,2,5};
 		buf1.put(arr);
 		System.out.println(buf1);
