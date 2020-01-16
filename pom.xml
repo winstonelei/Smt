@@ -113,7 +113,7 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.3.5</version>
+            <version>4.3.6</version>
         </dependency>
 
         <!-- json -->
@@ -151,14 +151,14 @@
         <dependency>
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-core</artifactId>
-            <version>1.14</version>
+            <version>1.22</version>
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-parsers</artifactId>
-            <version>1.14</version>
+            <version>1.22</version>
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>
@@ -173,7 +173,8 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>4.0.36.Final</version>
+            <version>4.1.41.Final</version>
+
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -222,7 +223,7 @@
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
-            <version>1.4.2</version>
+            <version>1.4.6</version>
         </dependency>
 
         <dependency>
