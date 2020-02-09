@@ -1,6 +1,5 @@
 package com.github.poi;
 
-import org.apache.poi.POIXMLTextExtractor;
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.extractor.WordExtractor;
 import org.apache.poi.hwpf.usermodel.Range;
@@ -110,7 +109,7 @@ public class WordReadUtil {
         String result = "";
 
         try {
-            ins = getFileInputString(filePath);
+          /*  ins = getFileInputString(filePath);
 
             xwpf = new XWPFDocument(ins);
 
@@ -118,7 +117,7 @@ public class WordReadUtil {
 
             result = extractor.getText();
 
-            ins.close();
+            ins.close();*/
         } catch (Exception e) {
             logger.error("getHdfsWord2007Content error");
         }

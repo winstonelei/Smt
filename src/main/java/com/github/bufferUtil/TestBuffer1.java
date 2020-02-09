@@ -2,6 +2,7 @@ package com.github.bufferUtil;
 
 import org.junit.jupiter.api.Test;
 
+import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 
 public class TestBuffer1 {
@@ -78,6 +79,33 @@ public class TestBuffer1 {
 		buf1.get(arr2);
 		for(int i : arr2){
 			System.out.print(Integer.toString(i) + ",");
+		}
+	}
+
+	@Test
+	public void test4(){
+		ByteBuffer buffer = ByteBuffer.allocate(10);
+
+		for(int i = 0; i < buffer.capacity(); ++i) {
+			buffer.put((byte)i);
+		}
+
+		buffer.position(2);
+		buffer.limit(6);
+
+		ByteBuffer sliceBuffer = buffer.slice();
+
+		for(int i = 0; i < sliceBuffer.capacity(); ++i) {
+			byte b = sliceBuffer.get(i);
+			b *= 2;
+			sliceBuffer.put(i, b);
+		}
+
+		buffer.position(0);
+		buffer.limit(buffer.capacity());
+
+		while(buffer.hasRemaining()) {
+			System.out.println(buffer.get());
 		}
 	}
 
