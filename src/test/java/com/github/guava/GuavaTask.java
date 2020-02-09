@@ -1,6 +1,5 @@
 package com.github.guava;
 
-import net.didion.jwnl.util.cache.Cache;
 
 import java.util.concurrent.Callable;
 
