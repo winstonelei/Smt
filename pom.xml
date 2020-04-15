@@ -378,6 +378,12 @@
             <version>1.21.0</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>cn.easysb.ip</groupId>
+            <artifactId>jip-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
 </project>
