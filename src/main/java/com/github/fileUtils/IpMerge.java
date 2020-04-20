@@ -26,9 +26,30 @@ import java.util.stream.Collectors;
  * @since [产品/模块版本] （可选）
  */
 public class IpMerge {
+
+    public static String convertString(String ipAddress) {
+        StringBuilder result = new StringBuilder();
+        String[] ipNumber =  ipAddress.split("\\.");
+        for(int i=0;i<ipNumber.length;i++){
+            String temp =ipNumber[i];
+            if(temp.equals("\uFEFF001")){
+                temp="1";
+            }
+            if(temp.equals("\uFEFF000")){
+                temp="0";
+            }
+            if(i==ipNumber.length-1){
+                result.append(Integer.valueOf(temp));
+            }else{
+                result.append(Integer.valueOf(temp)+".");
+            }
+        }
+        return result.toString();
+    }
+
     public static void main(String[] args)throws Exception {
-        String fileOutLPath="D:\\tmp\\spark\\etloutday\\sipDestIp\\hid=1029\\segement\\t6.txt";
-        String filePath = "D:\\tmp\\spark\\etloutday\\sipDestIp\\hid=1029\\segement\\ZH.txt";//JW_0408
+        String fileOutLPath="D:\\tmp\\spark\\etloutday\\sipDestIp\\hid=1029\\segement\\jingwai.txt";
+        String filePath = "D:\\tmp\\spark\\etloutday\\sipDestIp\\hid=1029\\segement\\jingwai2.txt";//JW_0408
         LineIterator it = FileUtils.lineIterator(new File(filePath),"UTF-8");
         List<IpMessage> list = new ArrayList<>();
         try{
@@ -37,12 +58,12 @@ public class IpMerge {
                 String[] splited = logStr.split(" ");
                 IpMessage location = new IpMessage();
                 if(splited[0]!=null && !"".equals(splited[0])){
-                    location.setBeginIp(splited[0].trim());
-                    location.setEndIp(splited[1].trim());
-                    location.setLocation(splited[3].trim());
+                    location.setBeginIp(convertString(splited[0].trim()));
+                    location.setEndIp(convertString(splited[1].trim()));
+                    location.setLocation(splited[2].trim());
                 }
                 list.add(location);
-                if (list.size() >= 30000) {
+                if (list.size() >= 50000) {
 
                     Map<String,List<IpMessage>> map = list.stream().collect(Collectors.groupingBy(IpMessage::getLocation));
                     List<JIPAddress> allResult = new ArrayList<>();
@@ -53,6 +74,7 @@ public class IpMerge {
                             if(ipMessage!=null && !"".equals(ipMessage)){
                                 JIPAddress jipAddress = JIPAddressUtils.toIpObject(ipMessage.getBeginIp()+"-"+ipMessage.getEndIp());
                                 if(jipAddress==null || "".equals(jipAddress)){
+                                    System.out.println("有空地址"+ipMessage.getBeginIp()+"-"+ipMessage.getEndIp());
                                     continue;
                                 }
                                 jipAddress.setData(ipMessage.getLocation());
@@ -91,7 +113,7 @@ public class IpMerge {
                 LineIterator.closeQuietly(it);
             }
 
-
+          //如果不到10000数据
             if(list.size()>0){
                 Map<String,List<IpMessage>> map = list.stream().collect(Collectors.groupingBy(IpMessage::getLocation));
                 List<JIPAddress> allResult = new ArrayList<>();
@@ -102,6 +124,7 @@ public class IpMerge {
                         if(ipMessage!=null && !"".equals(ipMessage)){
                             JIPAddress jipAddress = JIPAddressUtils.toIpObject(ipMessage.getBeginIp()+"-"+ipMessage.getEndIp());
                             if(jipAddress==null || "".equals(jipAddress)){
+                                System.out.println("有空地址"+ipMessage.getBeginIp()+"-"+ipMessage.getEndIp());
                                 continue;
                             }
                             jipAddress.setData(ipMessage.getLocation());
