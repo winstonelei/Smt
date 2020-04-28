@@ -5,7 +5,7 @@ import java.io.File;
 public class QueueWriterTest {
 	
 	public static void main(String[] args) throws Exception { 
-		Index index = new Index(new File("F:/tmp/MyMQ"));
+		Index index = new Index(new File("D:/tmp/MyMQ"));
 
 		QueueWriter w = new QueueWriter(index);
 		for(int i=0; i<100;i++){
