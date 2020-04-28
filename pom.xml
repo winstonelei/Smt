@@ -379,11 +379,21 @@
         </dependency>
 
 
+        <!--ip-->
         <dependency>
             <groupId>cn.easysb.ip</groupId>
             <artifactId>jip-common</artifactId>
             <version>1.0.0</version>
         </dependency>
+
+
+        <!--qlexpress-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>QLExpress</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+
     </dependencies>
 
 </project>
