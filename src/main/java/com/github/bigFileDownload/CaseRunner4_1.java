@@ -11,7 +11,7 @@ public class CaseRunner4_1 {
 
   public static void main(String[] args) throws Exception {
     if (0 == args.length) {
-      args = new String[] { "https://downloads.lightbend.com/scala/2.11.6/scala-2.11.6.msi", "4", "3" };
+      args = new String[] { "http://down5.huorong.cn/hrkill.exe", "4", "3" };
     }
     main0(args);
   }

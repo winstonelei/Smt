@@ -29,18 +29,42 @@ public class ClientConnectorStartup {
 		Message message = new Message();
 		message.sign(REQUEST);
 		message.data(user);
+
+
 		//获取到channel发送双方规定的message格式的信息
 		channel.writeAndFlush(message).addListener(new ChannelFutureListener() {
-			
 			public void operationComplete(ChannelFuture future) throws Exception {
-				 if(!future.isSuccess()) {  
-	                    logger.info("send fail,reason is {}",future.cause().getMessage());  
-	                } 
+				if(!future.isSuccess()) {
+					logger.info("send fail,reason is {}",future.cause().getMessage());
+				}
 			}
 		});
 		//防止对象处理发生异常的情况
 		DefaultCommonClientConnector.MessageNonAck msgNonAck = new DefaultCommonClientConnector.MessageNonAck(message, channel);
 		clientConnector.addNeedAckMessageInfo(msgNonAck);
+
+
+
+	/*	while(true){
+			try {
+				//获取到channel发送双方规定的message格式的信息
+				channel.writeAndFlush(message).addListener(new ChannelFutureListener() {
+					public void operationComplete(ChannelFuture future) throws Exception {
+						if(!future.isSuccess()) {
+							logger.info("send fail,reason is {}",future.cause().getMessage());
+						}
+					}
+				});
+				//防止对象处理发生异常的情况
+				DefaultCommonClientConnector.MessageNonAck msgNonAck = new DefaultCommonClientConnector.MessageNonAck(message, channel);
+				clientConnector.addNeedAckMessageInfo(msgNonAck);
+				Thread.sleep(1000L);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}*/
+
+
 	}
 	
 	public static class User {

@@ -11,6 +11,16 @@ package com.github.fileUtils;
 public class IpHid {
     private long ip;
 
+    private String ipStr;
+
+    public String getIpStr() {
+        return ipStr;
+    }
+
+    public void setIpStr(String ipStr) {
+        this.ipStr = ipStr;
+    }
+
     public long getIp() {
         return ip;
     }

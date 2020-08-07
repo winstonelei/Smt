@@ -17,12 +17,13 @@ public class TestBuffer1 {
 		buf.put(21);// position位置：1 - > 2
 		buf.put(35);// position位置：2 - > 3
 		//把位置复位为0，也就是position位置：3 - > 0
+		System.out.println("使用flip复位前：" + buf);
 		buf.flip();
-		System.out.println("使用flip复位：" + buf);
+		System.out.println("使用flip复位后：" + buf);
 		System.out.println("容量为: " + buf.capacity());	//容量一旦初始化后不允许改变（warp方法包裹数组除外）
 		System.out.println("限制为: " + buf.limit());		//由于只装载了三个元素,所以可读取或者操作的元素为3 则limit=3
 
-		int temp=buf.position();
+		int temp=buf.position();//数组复位后，postion的位置
 		System.out.println(buf.get());
 		buf.position(temp);
 		System.out.println(buf.get());
@@ -85,25 +86,19 @@ public class TestBuffer1 {
 	@Test
 	public void test4(){
 		ByteBuffer buffer = ByteBuffer.allocate(10);
-
 		for(int i = 0; i < buffer.capacity(); ++i) {
 			buffer.put((byte)i);
 		}
-
 		buffer.position(2);
 		buffer.limit(6);
-
 		ByteBuffer sliceBuffer = buffer.slice();
-
 		for(int i = 0; i < sliceBuffer.capacity(); ++i) {
 			byte b = sliceBuffer.get(i);
 			b *= 2;
 			sliceBuffer.put(i, b);
 		}
-
 		buffer.position(0);
 		buffer.limit(buffer.capacity());
-
 		while(buffer.hasRemaining()) {
 			System.out.println(buffer.get());
 		}
