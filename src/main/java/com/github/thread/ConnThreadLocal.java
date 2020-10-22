@@ -12,22 +12,27 @@ public class ConnThreadLocal {
 	}
 	
 	public static void main(String[] args) throws InterruptedException {
-		
+
+		final String requestMessage ="sayHello";
+
 		final ConnThreadLocal ct = new ConnThreadLocal();
 		Thread t1 = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				ct.setTh("张三");
 				ct.getTh();
+				System.out.println(Thread.currentThread().getName() + ":" + requestMessage);
 			}
 		}, "t1");
-		
+
+
 		Thread t2 = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				try {
 					Thread.sleep(1000);
 					ct.getTh();
+					System.out.println(Thread.currentThread().getName() + ":" + requestMessage);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

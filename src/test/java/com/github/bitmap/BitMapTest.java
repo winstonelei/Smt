@@ -22,7 +22,7 @@ public class BitMapTest {
         //创建RoaringBitmap rr2
         RoaringBitmap rr2 = new RoaringBitmap();
         //向rr2中添加10000-12000共2000个数字
-        rr2.add(10000L,12000L);
+        rr2.add(1,120000L);
         //返回第3个数字是1000，第0个数字是1，第1个数字是2，则第3个数字是1000
         System.out.println(rr.select(3));
         //返回value = 2 时的索引为 1。value = 1 时，索引是 0 ，value=3的索引为2

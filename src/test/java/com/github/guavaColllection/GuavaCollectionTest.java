@@ -27,6 +27,13 @@ public class GuavaCollectionTest {
         map2.put("key2",2);
 
         //去相同集合的数据
+        Map<String,Integer> res = new HashMap<>();
+        res.putAll(map1);
+        res.putAll(map2);
+        System.out.println(res);
+
+
+
 
         System.out.println("----------------两个map的交集---------------------------");
         MapDifference<String,Integer> difference = Maps.difference(map1,map2);

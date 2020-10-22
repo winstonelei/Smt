@@ -50,4 +50,36 @@ public class DataUtilsTest {
         res.put("rows", DataUtil.pageFormat(rows, 0,2));
         System.out.println(res);
     }
+
+    public static void main(String[] args) {
+        List<ShieldSafe> wafs = new ArrayList<>();
+        ShieldSafe safe1 = new ShieldSafe();
+        safe1.setShieldState(1);
+        ShieldSafe safe2 = new ShieldSafe();
+        safe2.setShieldState(2);
+        ShieldSafe safe3 = new ShieldSafe();
+        safe3.setShieldState(3);
+        wafs.add(safe1);
+        wafs.add(safe2);
+        wafs.add(safe3);
+
+        for (ShieldSafe safe : wafs) {
+            //按类型判断防护
+            ShieldWafStateEnum state = ShieldWafStateEnum.getEnum(safe.getShieldState());
+            //处理未下发配置情况
+            switch (state) {
+                case START_SHIELD_FAIL:
+                    System.out.println(state.getCode());
+                    continue;
+                case START_SHIELDING:
+                    System.out.println(state.getCode());
+                    continue;
+                case SHIELD:
+                    System.out.println(state.getCode());
+                    continue;
+            }
+        }
+
+
+    }
 }
