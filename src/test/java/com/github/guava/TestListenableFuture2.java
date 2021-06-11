@@ -39,6 +39,7 @@ public class TestListenableFuture2 {
             }
         });
 
+/*
         Futures.addCallback(stringTask, new FutureCallback<String>() {
             @Override
             public void onSuccess(String result) {
@@ -73,6 +74,7 @@ public class TestListenableFuture2 {
             public void onFailure(Throwable t) {
             }
         });
+*/
 
         // 执行时间
         System.err.println("time: " + (System.currentTimeMillis() - t1));
