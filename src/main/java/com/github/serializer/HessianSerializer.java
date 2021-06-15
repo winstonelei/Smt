@@ -2,6 +2,7 @@ package com.github.serializer;
 
 import com.caucho.hessian.io.Hessian2Input;
 import com.caucho.hessian.io.Hessian2Output;
+import com.github.spi.MySPI;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -10,6 +11,7 @@ import java.io.IOException;
 /**
  * Hession序列化
  */
+@MySPI("hessian")
 public class HessianSerializer implements  ObjectSerializer {
 
     /**

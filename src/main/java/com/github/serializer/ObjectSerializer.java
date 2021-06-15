@@ -1,8 +1,11 @@
 package com.github.serializer;
 
+import com.github.spi.MySPI;
+
 /*
   序列化接口
  */
+@MySPI
 public interface ObjectSerializer{
 
 
