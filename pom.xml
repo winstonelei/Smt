@@ -27,7 +27,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <log4j2.version>2.6.2</log4j2.version>
-        <commons.net.version>3.3</commons.net.version>
+        <commons.net.version>3.9.0</commons.net.version>
     </properties>
 
     <dependencies>
